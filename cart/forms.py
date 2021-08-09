@@ -8,4 +8,4 @@ class CartAddProductForm(forms.Form):
         choices=PRODUCT_QUANTITY_CHOICES, coerce=int)
 
     override = forms.BooleanField(
-        requeired=False, initial=False, widget=forms.HiddenInput)
+        required=False, initial=False, widget=forms.HiddenInput)
