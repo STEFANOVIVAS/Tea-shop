@@ -25,7 +25,6 @@ def cart_remove(request, product_id):
     return redirect('cart:cart_detail')     # Create your views here.
 
 
-@require_POST
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'cart/detail.html', {'cart': cart})

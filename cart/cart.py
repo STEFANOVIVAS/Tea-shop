@@ -23,7 +23,7 @@ class Cart(object):
         if override_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
-            product_id[product_id]['quantity'] += quantity
+            self.cart[product_id]['quantity'] += quantity
         self.save()
 
     def save(self):

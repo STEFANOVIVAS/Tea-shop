@@ -1,11 +1,12 @@
 {% extends 'shop/base.html' %}
+{% load static %}
 
 {% block title %} 
     Your shopping cart
 {% endblock %} 
 
 {% block content %} 
-    <h1> your shopping cart</h1>
+    <h1> Your shopping cart</h1>
     <table class="cart">
         <thead>
             <tr>
@@ -18,8 +19,8 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in chart %}
-                {% with produc=item.product %}
+            {% for item in cart %}
+                {% with product=item.product %}
                 <tr>
                     <td>
                         <a href="{{product.get_absolute_url}}">
@@ -30,13 +31,13 @@
                     <td>{{product.name}}</td>
                     <td>{{item.quantity}}</td>
                     <td>
-                        <form action="{% url 'cart:cart_remove' product.id %}" method="post"></form>
-                        <input type="submit" value+"Remove">
+                        <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                        <input type="submit" value="Remove">
                         {% csrf_token %}
-                        
+                        </form>
                     </td>
-                    <td class="num> ${{item.price}}"></td>
-                    <td class="num> ${{item.total_price}}"></td>
+                    <td class="num"> ${{item.price}}</td>
+                    <td class="num"> ${{item.total_price}}</td>
                 </tr>
                 {% endwith %}
             {% endfor %}
