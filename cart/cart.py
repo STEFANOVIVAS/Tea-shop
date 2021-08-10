@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from shop.models import Product
+from .forms import CartAddProductForm
 
 
 class Cart(object):
@@ -24,6 +25,9 @@ class Cart(object):
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
+        self.cart[product_id]['quantity'] = min(
+            20, self.cart[product_id]['quantity'])
+
         self.save()
 
     def save(self):
@@ -47,7 +51,9 @@ class Cart(object):
             cart[str(product.id)]['product'] = product
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])
-            item['total_price'] = item['price'] * item['quantity']
+            item['total_price'] = item['quantity'] * item['price']
+            # item['update_quantity_form'] = CartAddProductForm(
+            #     initial={'quantity': item['quantity'], 'override': True})
             yield item
 
     def __len__(self):
