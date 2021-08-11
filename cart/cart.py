@@ -54,6 +54,7 @@ class Cart(object):
             item['total_price'] = item['quantity'] * item['price']
             # item['update_quantity_form'] = CartAddProductForm(
             #     initial={'quantity': item['quantity'], 'override': True})
+
             yield item
 
     def __len__(self):

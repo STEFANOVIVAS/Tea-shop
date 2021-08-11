@@ -1,5 +1,5 @@
-d = {'casa': {'cozinha': 'grande', 'sala': 'pequena'}}
-comodo = 'banheiro'
-d['casa'][comodo] = 'estreito'
-for item in d.values():
-    print(item)
+cart = {'a': {'quantity': 'd', 'price': '15.50'},
+        'b': {'quantity': 'e', 'price': '30.00'}}
+
+for item in cart:
+    print(item['quantity'])
