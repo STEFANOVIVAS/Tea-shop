@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import braintree
 import os
 from pathlib import Path
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# configurações para o braintree
+BRAINTREE_MERCHANT_ID = 'svm9n3f42f6jmsb5'
+BRAINTREE_PUBLIC_KEY = 'rbkwbcn46hcbx6t9'
+BRAINTREE_PRIVATE_KEY = '34ccc7765c9e7138055fa5dbad967b4e'
+
+
+BRAINTREE_CONF = braintree.Configuration(braintree.Environment.Sandbox, BRAINTREE_MERCHANT_ID,
+                                         BRAINTREE_PUBLIC_KEY, BRAINTREE_PRIVATE_KEY)
