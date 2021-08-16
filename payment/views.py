@@ -17,7 +17,7 @@ def payment_process(request):
 
     if request.method == 'POST':
         # obtem nonce
-        nonce = request.POST.get('payment_methof_nonce', None)
+        nonce = request.POST.get('payment_method_nonce', None)
         # cria e subete a transação
         result = gateway.transaction.sale({
             'amount': f'{total_cost:.2f}',
