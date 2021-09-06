@@ -142,3 +142,5 @@ BRAINTREE_PRIVATE_KEY = '34ccc7765c9e7138055fa5dbad967b4e'
 
 BRAINTREE_CONF = braintree.Configuration(braintree.Environment.Sandbox, BRAINTREE_MERCHANT_ID,
                                          BRAINTREE_PUBLIC_KEY, BRAINTREE_PRIVATE_KEY)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
