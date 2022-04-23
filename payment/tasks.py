@@ -1,5 +1,5 @@
 from io import BytesIO
-from celery import task
+from celery import shared_task
 from django.shortcuts import get_object_or_404
 import weasyprint
 from django.template.loader import render_to_string
@@ -8,7 +8,7 @@ from django.conf import settings
 from orders.models import Order
 
 
-@task
+@shared_task
 def payment_completed(order_id):
     '''tarefa para enviar notificação por e-mail
     quando um pedido é criado com sucesso'''

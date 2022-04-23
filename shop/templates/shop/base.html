@@ -1,34 +1,37 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My shop {% endblock %}</title>
-    <link href="{% static 'shop/css/base.css' %}" rel="stylesheet">
-  </head>
-  <body>
-    <div id ="header">
-        <a href="/" class="logo">My shop</a>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}My shop {% endblock %}</title>
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header">
+    <a href="/" class="logo">My shop</a>
+  </div>
+  <div id="subheader">
+    <div class="cart">
+      {% with total_products=cart|length %}
+      {% if total_products > 0 %}
+      Your cart:
+      {{ total_products}} item{{ total_products|pluralize }},
+      Total price ${{ cart.get_total_price }}
+
+      {% else %}
+      Your cart is empty.
+      {% endif %}
+      {% endwith %}
     </div>
-    <div id="subheader">
-        <div class="cart">
-          {% with total_products=cart|length %}
-            {% if total_products > 0 %}
-              Your cart:
-                {{ total_products}} item{{ total_products|pluralize }},
-                Total price ${{ cart.get_total_price }}
-          
-            {% else %}
-              Your cart is empty.
-            {% endif %}
-          {% endwith %}
-          </div>
-    </div>
-    <div id="content">
-        {% block content %} 
-        {% endblock %}
-    </div>
-  </body>
+  </div>
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+
 </html>

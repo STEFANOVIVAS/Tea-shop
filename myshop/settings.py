@@ -124,6 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -142,5 +144,3 @@ BRAINTREE_PRIVATE_KEY = '34ccc7765c9e7138055fa5dbad967b4e'
 
 BRAINTREE_CONF = braintree.Configuration(braintree.Environment.Sandbox, BRAINTREE_MERCHANT_ID,
                                          BRAINTREE_PUBLIC_KEY, BRAINTREE_PRIVATE_KEY)
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')

@@ -5,7 +5,7 @@ import braintree
 from orders.models import Order
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
-from .tasks import payment_completed
+from payment.tasks import payment_completed
 # intancia o gateway de pagamento braintree
 gateway = braintree.BraintreeGateway(settings.BRAINTREE_CONF)
 
